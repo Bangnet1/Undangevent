@@ -109,3 +109,11 @@
 .rundown-timeline-content h3{ margin:7px 0 0; text-align:left; font-size:16px; line-height:1.45; font-weight:700; overflow-wrap:anywhere; }
 .rundown-timeline-content p{ text-align:left; line-height:1.55; }
 @media(max-width:480px){.rundown-modal{padding:24px 20px 28px}.rundown-timeline-item{gap:12px;padding-bottom:23px}.rundown-timeline-content h3{font-size:15px}.rundown-time{font-size:12px}}
+
+/* Match rundown card to the date and location information panels */
+.invite-rundown-card{background:#f7f8fa;border:0;border-radius:9px;box-shadow:none;padding:16px 14px;margin:14px 0 22px;color:#47566d}
+.invite-rundown-top{margin-bottom:10px}
+.invite-rundown-current{background:transparent;border-radius:0;padding:4px 0 2px;gap:6px}
+.invite-rundown-current>b{font-size:14px;line-height:1.45;color:#47566d}
+.invite-rundown-current small{font-size:11px;line-height:1.5}
+.invite-rundown-open{margin-top:12px}
