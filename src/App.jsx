@@ -8,11 +8,7 @@ import {
 } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 
-const initialEvents = [
-  { id: 'demo-1', title: 'Doctor Gathering & Referral Networking', subtitle: 'RS Indonesia Heart Center · Karawang', date: '2026-12-12', time: '09.00 – 16.00 WIB', status: 'Persiapan', guests: 186, confirmed: 124, attended: 0, color: 'gold', initials: 'DG' },
-  { id: 'demo-2', title: 'Patient Safety & Quality Forum', subtitle: 'Auditorium Utama · Karawang', date: '2027-01-18', time: '08.30 – 13.00 WIB', status: 'Draft', guests: 92, confirmed: 0, attended: 0, color: 'blue', initials: 'PS' },
-  { id: 'demo-3', title: 'Clinical Update: Cardiovascular Care', subtitle: 'Hybrid Event · IHC Karawang', date: '2027-02-05', time: '10.00 – 15.00 WIB', status: 'Terjadwal', guests: 240, confirmed: 198, attended: 0, color: 'teal', initials: 'CU' },
-]
+const initialEvents = []
 
 const menu = [
   { label: 'Workspace', items: [{ name: 'Ringkasan', icon: LayoutDashboard }, { name: 'Manajemen Event', icon: CalendarDays }, { name: 'Daftar Tamu', icon: Users }, { name: 'Undangan Digital', icon: TicketCheck }] },
@@ -83,14 +79,14 @@ function App() {
     if (!user || !isSupabaseConfigured) return
     supabase.from('events').select('id,title,venue,starts_at,status,created_at').order('starts_at', { ascending: true }).then(({ data, error }) => {
       if (error) { setNotice('Database belum siap: ' + error.message); return }
-      if (data?.length) setEvents(data.map((e,i)=>({ id:e.id, title:e.title, subtitle:e.venue || 'Lokasi belum ditentukan', date:e.starts_at?.slice(0,10) || '', time:e.starts_at ? new Date(e.starts_at).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}) : '—', status:e.status, guests:0, confirmed:0, attended:0, color:['gold','blue','teal'][i%3], initials:e.title.split(' ').slice(0,2).map(s=>s[0]).join('').toUpperCase() })))
+      setEvents((data || []).map((e,i)=>({ id:e.id, title:e.title, subtitle:e.venue || 'Lokasi belum ditentukan', date:e.starts_at?.slice(0,10) || '', time:e.starts_at ? new Date(e.starts_at).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}) : '—', status:e.status, guests:0, confirmed:0, attended:0, color:['gold','blue','teal'][i%3], initials:e.title.split(' ').slice(0,2).map(s=>s[0]).join('').toUpperCase() })))
     })
   }, [user])
 
   const stats = useMemo(() => [
-    { label:'Total event', value:events.length, note:'Seluruh agenda terkelola', icon:CalendarDays, trend:'+2 bulan ini', up:true },
-    { label:'Total undangan', value:events.reduce((a,e)=>a+e.guests,0).toLocaleString('id-ID'), note:'Tamu dari seluruh event', icon:Users, trend:'+18,4%', up:true },
-    { label:'Konfirmasi hadir', value:events.reduce((a,e)=>a+e.confirmed,0).toLocaleString('id-ID'), note:'RSVP positif diterima', icon:TicketCheck, trend:'68,2% response', up:true },
+    { label:'Total event', value:events.length, note:'Event tersimpan di database', icon:CalendarDays, trend:'Data aktual', up:true },
+    { label:'Total undangan', value:events.reduce((a,e)=>a+e.guests,0).toLocaleString('id-ID'), note:'Tamu dari seluruh event', icon:Users, trend:'Data aktual', up:true },
+    { label:'Konfirmasi hadir', value:events.reduce((a,e)=>a+e.confirmed,0).toLocaleString('id-ID'), note:'RSVP positif diterima', icon:TicketCheck, trend:'Data aktual', up:true },
     { label:'Sudah check-in', value:events.reduce((a,e)=>a+e.attended,0), note:'Kehadiran tercatat', icon:ShieldCheck, trend:'Belum ada event', up:false },
   ], [events])
   const filtered = events.filter(e => e.title.toLowerCase().includes(query.toLowerCase()) || e.subtitle.toLowerCase().includes(query.toLowerCase()))
@@ -98,18 +94,18 @@ function App() {
   async function createEvent(e) {
     e.preventDefault(); if (!newTitle || !newDate) return
     setSaving(true)
-    const payload = { title:newTitle, venue:newVenue, starts_at:new Date(newDate+'T09:00:00').toISOString(), status:'Draft' }
+    const payload = { title:newTitle, venue:newVenue, starts_at:new Date(newDate+'T09:00:00').toISOString(), status:'Draft', created_by:user.id }
     if (user && isSupabaseConfigured) {
       const { data, error } = await supabase.from('events').insert(payload).select().single()
       if (error) { setNotice(error.message); setSaving(false); return }
-      setEvents(prev=>[...prev,{id:data.id,title:data.title,subtitle:data.venue,date:data.starts_at.slice(0,10),time:'09.00 WIB',status:data.status,guests:0,confirmed:0,attended:0,color:'gold',initials:'EV'}])
-    } else setEvents(prev=>[{id:'local-'+Date.now(),...payload,subtitle:newVenue,date:newDate,time:'09.00 WIB',guests:0,confirmed:0,attended:0,color:'gold',initials:'EV'},...prev])
+      const { error: staffError } = await supabase.from('event_staff').insert({ event_id:data.id, user_id:user.id, role:'event_manager' })\n      if (staffError) { setNotice('Event tersimpan, tetapi penugasan pengelola gagal: '+staffError.message); setSaving(false); return }\n      setEvents(prev=>[...prev,{id:data.id,title:data.title,subtitle:data.venue,date:data.starts_at.slice(0,10),time:'09.00 WIB',status:data.status,guests:0,confirmed:0,attended:0,color:'gold',initials:'EV'}])
+    } else { setNotice('Supabase belum dikonfigurasi. Data tidak disimpan. Tambahkan VITE_SUPABASE_URL dan VITE_SUPABASE_PUBLISHABLE_KEY di GitHub Actions Variables, lalu jalankan deployment ulang.'); setSaving(false); return }
     setSaving(false); setShowCreate(false); setNewTitle(''); setNewDate(''); setNotice('Event berhasil ditambahkan.')
   }
   async function logout() { if (isSupabaseConfigured) await supabase.auth.signOut(); setUser(null) }
 
   if (!sessionReady) return <div className="loading-screen"><div className="loader"/><span>Menyiapkan workspace…</span></div>
-  if (isSupabaseConfigured && !user) return <Login onLogin={setUser}/>
+  if (!isSupabaseConfigured) return <div className='loading-screen'><div className='panel' style={{maxWidth:520,padding:28}}><h2>HEMS belum terhubung ke database</h2><p>Data demo sudah dinonaktifkan. Untuk mulai memasukkan data asli, administrator perlu memasang VITE_SUPABASE_URL dan VITE_SUPABASE_PUBLISHABLE_KEY pada GitHub → Settings → Secrets and variables → Actions → Variables, lalu menjalankan ulang deployment.</p></div></div>\n  if (!user) return <Login onLogin={setUser}/>
   const greeting = user?.email?.split('@')[0] || 'Administrator'
   return <div className="app-shell">
     <aside className={'sidebar '+(mobileNav?'open':'')}>
@@ -127,7 +123,7 @@ function App() {
         {page==='Ringkasan' ? <>
           <div className="stats-grid">{stats.map((s,i)=><article className="stat-card" key={s.label}><div className="stat-top"><span>{s.label}</span><div className={'stat-icon stat-'+i}><s.icon size={18}/></div></div><div className="stat-value">{s.value}</div><div className="stat-foot"><span>{s.note}</span><small className={s.up?'positive':''}>{s.trend}</small></div></article>)}</div>
           <div className="section-heading"><div><h2>Event Anda</h2><p>Pantau dan kelola agenda yang sedang berjalan.</p></div><button className="text-btn" onClick={()=>setPage('Manajemen Event')}>Lihat semua <ArrowUpRight size={15}/></button></div>
-          <div className="event-grid">{events.slice(0,3).map(event=><EventCard key={event.id} event={event} onOpen={()=>setPage('Manajemen Event')}/>)}</div>
+          <div className="event-grid">{events.length ? events.slice(0,3).map(event=><EventCard key={event.id} event={event} onOpen={()=>setPage('Manajemen Event')}/>) : <div className='panel empty-state'>Belum ada event. Klik <b>Buat event baru</b> untuk memasukkan event pertama Anda.</div>}</div>
           <div className="lower-grid"><section className="panel activity-panel"><div className="panel-heading"><div><h3>Aktivitas terbaru</h3><p>Ringkasan aktivitas workspace</p></div><button className="more-btn"><MoreHorizontal size={19}/></button></div><div className="empty-activity"><div className="empty-icon"><Activity size={20}/></div><b>Aktivitas akan tampil di sini</b><span>Ketika tim mulai mengelola event, riwayat aktivitas akan tercatat otomatis.</span></div></section><section className="panel quick-panel"><div className="panel-heading"><div><h3>Akses cepat</h3><p>Mulai dari pekerjaan umum</p></div></div><div className="quick-links"><button onClick={()=>setPage('Daftar Tamu')}><span className="quick-icon qi-blue"><Users size={18}/></span><span><b>Kelola daftar tamu</b><small>Tambah dan impor data undangan</small></span><ChevronRight size={16}/></button><button onClick={()=>setPage('Undangan Digital')}><span className="quick-icon qi-gold"><TicketCheck size={18}/></span><span><b>Desain undangan</b><small>Personalisasi undangan digital</small></span><ChevronRight size={16}/></button><button onClick={()=>setPage('Registrasi & Check-in')}><span className="quick-icon qi-teal"><ShieldCheck size={18}/></span><span><b>Registrasi & check-in</b><small>Kelola kehadiran peserta</small></span><ChevronRight size={16}/></button></div></section></div>
         </> : <section className="panel list-panel"><div className="list-toolbar"><div><h2>{page}</h2><p>Kelola data {page.toLowerCase()} dalam workspace Anda.</p></div><div className="toolbar-actions"><div className="search-box"><Search size={16}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Cari event…"/></div><button className="secondary-btn"><Filter size={16}/> Filter</button></div></div>{page==='Manajemen Event'?<div className="table-wrap"><table><thead><tr><th>NAMA EVENT</th><th>TANGGAL</th><th>UNDANGAN</th><th>STATUS</th><th></th></tr></thead><tbody>{filtered.map(e=><tr key={e.id}><td><div className="table-event"><span className={'event-avatar '+e.color}>{e.initials}</span><span><b>{e.title}</b><small>{e.subtitle}</small></span></div></td><td>{fmt(e.date)}</td><td>{e.guests} tamu</td><td><span className={'status-pill '+(e.status==='Terjadwal'?'green':e.status==='Persiapan'?'amber':'gray')}>{e.status}</span></td><td><button className="more-btn"><MoreHorizontal size={18}/></button></td></tr>)}</tbody></table>{filtered.length===0&&<div className="empty-state">Belum ada event yang cocok dengan pencarian.</div>}</div>:<div className="module-empty"><div className="module-empty-icon"><Sparkles size={23}/></div><h3>Modul {page} siap dikembangkan</h3><p>Fondasi workspace sudah tersedia. Modul ini akan terhubung ke data event, tamu, dan hak akses.</p><button className="secondary-btn" onClick={()=>setPage('Ringkasan')}><ChevronLeft size={15}/> Kembali ke ringkasan</button></div>}</section>}
         <footer className="footer"><span>© 2026 HEMS · Hospital Event Management System</span><span>Designed for better healthcare experiences <HeartPulse size={13}/></span></footer>
