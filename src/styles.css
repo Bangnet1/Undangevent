@@ -427,3 +427,7 @@
 @media(prefers-reduced-motion:reduce){
   .invite-content button.invite-rundown-card .rundown-live-dot{animation:none!important}
 }
+
+.invite-venue-link{color:inherit;text-decoration:underline;text-decoration-color:#c5a66a;text-underline-offset:3px}
+.invite-venue-link:active{opacity:.7}
+.field-hint{display:block;color:#8490a0;font-size:11px;margin:-5px 0 12px}
