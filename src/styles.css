@@ -191,3 +191,72 @@
   .invite-content .invite-rundown-card{padding:12px 14px!important;margin:10px 0 18px!important}
   .invite-content .invite-rundown-top{margin-bottom:6px!important}
 }
+
+
+/* Make the date, location and rundown cards a uniform stack */
+@media(max-width:600px){
+  .invite-content .invite-details{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    margin:22px 0 10px!important;
+  }
+  .invite-content .invite-details>div,
+  .invite-content .invite-rundown-card{
+    box-sizing:border-box!important;
+    width:100%!important;
+    height:76px!important;
+    min-height:76px!important;
+    max-height:76px!important;
+    margin:0!important;
+    padding:10px 14px!important;
+    border:0!important;
+    border-radius:9px!important;
+    background:#f7f8fa!important;
+  }
+  .invite-content .invite-details>div{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+  }
+  .invite-content .invite-rundown-card{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    gap:3px!important;
+    text-align:left!important;
+    cursor:pointer!important;
+  }
+  .invite-content .invite-rundown-top{
+    width:100%!important;
+    margin:0!important;
+    line-height:1.2!important;
+  }
+  .invite-content .invite-rundown-top b{font-size:12px!important}
+  .invite-content .invite-rundown-top small{font-size:10px!important}
+  .invite-content .invite-rundown-current{
+    display:grid!important;
+    grid-template-columns:7px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    column-gap:6px!important;
+    row-gap:1px!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .invite-content .invite-rundown-current>b{
+    grid-column:2!important;grid-row:1!important;
+    font-size:11px!important;line-height:1.15!important;
+    white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+  .invite-content .invite-rundown-current small{
+    grid-column:2!important;grid-row:2!important;
+    font-size:9px!important;line-height:1.15!important;
+    white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+  .invite-content .invite-rundown-current .rundown-live-dot,
+  .invite-content .invite-rundown-current .rundown-next-dot{
+    grid-column:1!important;grid-row:1!important;
+    width:7px!important;height:7px!important;
+  }
+  .invite-content .invite-rundown-open{display:none!important}
+}
