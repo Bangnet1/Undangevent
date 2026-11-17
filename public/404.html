@@ -7,8 +7,7 @@
     <title>HEMS — Memuat undangan</title>
     <script>
       // GitHub Pages SPA fallback: preserve the requested path and load the app shell.
-      sessionStorage.setItem('hems-redirect', location.pathname + location.search + location.hash);
-      location.replace('/');
+      location.replace('/?hems_path=' + encodeURIComponent(location.pathname + location.search + location.hash));
     </script>
   </head>
   <body><p>Memuat halaman HEMS…</p></body>
