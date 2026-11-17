@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { Html5Qrcode } from 'html5-qrcode'
 import QRCode from 'qrcode'
 import { Activity, ArrowUpRight, Bell, CalendarDays, ChevronRight, CircleHelp, ClipboardList, Clock3, FileBarChart, HeartPulse, LayoutDashboard, LogOut, Menu, Plus, Search, Settings, ShieldCheck, TicketCheck, Users, X, Trash2, Pencil, Download, Copy, CheckCircle2, Camera, QrCode, UserCheck } from 'lucide-react'
@@ -12,12 +12,11 @@ function Login({onLogin}){const[email,setEmail]=useState(''),[password,setPasswo
 
 
 function PublicInvitation({token}) {
- const [data,setData]=useState(null),[error,setError]=useState(''),[done,setDone]=useState(false),[busy,setBusy]=useState(false),[qr,setQr]=useState('');
+ const [data,setData]=useState(null),[error,setError]=useState(''),[qr,setQr]=useState('');
  useEffect(()=>{supabase.functions.invoke('public-invitation',{body:{token}}).then(async({data,error})=>{if(error||data?.error)setError(data?.error||error.message);else{setData(data);setQr(await QRCode.toDataURL(window.location.href,{width:280,margin:2}))}})},[token]);
- async function checkin(){setBusy(true);const {data,error}=await supabase.functions.invoke('public-self-checkin',{body:{token}});if(error||data?.error)setError(data?.error||error.message);else setDone(true);setBusy(false)}
  if(error)return <div className="public-invite-shell"><div className="invite-card"><h1>Undangan tidak tersedia</h1><p>{error}</p></div></div>;
  if(!data)return <div className="public-invite-shell"><div className="invite-card">Memuat undangan…</div></div>;
- return <div className="public-invite-shell"><article className="invite-card"><div className="invite-brand">HEMS · HOSPITAL EVENT INVITATION</div><div className="invite-content"><div className="invite-eyebrow">YOU ARE CORDIALLY INVITED</div><h1>{data.event?.title}</h1><p className="invite-guest">Kepada Yth.<br/><strong>{data.guest?.title} {data.guest?.full_name}</strong><small>{data.guest?.organization}</small></p><div className="invite-details"><div><CalendarDays/><span><b>Tanggal</b><small>{data.event?.starts_at?new Date(data.event.starts_at).toLocaleString('id-ID'):''}</small></span></div><div><Activity/><span><b>Lokasi</b><small>{data.event?.venue}</small></span></div></div><h3>QR Kehadiran Personal</h3>{qr&&<img className='invite-qr-image' src={qr} alt='QR undangan personal'/>}<p>QR pribadi dapat ditunjukkan kepada petugas registrasi. Anda juga dapat check-in mandiri saat tiba di lokasi.</p><button className="primary-btn invite-checkin" onClick={checkin} disabled={busy||done}>{busy?'Memproses…':done?'Kehadiran tercatat':'Check-in mandiri di lokasi'}</button>{done&&<div className="invite-success">Check-in Anda berhasil atau sudah tercatat.</div>}</div></article></div>;
+ return <div className="public-invite-shell"><article className="invite-card"><div className="invite-brand">HEMS · HOSPITAL EVENT INVITATION</div><div className="invite-content"><div className="invite-eyebrow">YOU ARE CORDIALLY INVITED</div><h1>{data.event?.title}</h1><p className="invite-guest">Kepada Yth.<br/><strong>{data.guest?.title} {data.guest?.full_name}</strong><small>{data.guest?.organization}</small></p><div className="invite-details"><div><CalendarDays/><span><b>Tanggal</b><small>{data.event?.starts_at?new Date(data.event.starts_at).toLocaleString('id-ID'):''}</small></span></div><div><Activity/><span><b>Lokasi</b><small>{data.event?.venue}</small></span></div></div><h3>QR Kehadiran Personal</h3>{qr&&<img className='invite-qr-image' src={qr} alt='QR undangan personal'/>}<p>Tunjukkan QR pribadi ini kepada petugas atau pindai pada kiosk registrasi yang disediakan di lokasi acara. QR hanya berlaku untuk event ini.</p></div></article></div>;
 }
 
 function App(){
@@ -73,4 +72,4 @@ function App(){
 }
 export default App
 
-function Scanner({onScan}){const[error,setError]=useState('');useEffect(()=>{const scanner=new Html5Qrcode('hems-qr-reader');let active=true;scanner.start({facingMode:'environment'},{fps:10,qrbox:{width:230,height:230}},text=>{if(active){active=false;scanner.stop().catch(()=>{});onScan(text)}},()=>{}).catch(e=>setError('Kamera tidak dapat dibuka. Izinkan akses kamera atau gunakan input token/link di bawah.'));return()=>{active=false;scanner.stop().catch(()=>{})}},[onScan]);return <>{error&&<p className="form-message">{error}</p>}</>}
+function Scanner({onScan}){const[error,setError]=useState('');const callback=useRef(onScan);useEffect(()=>{callback.current=onScan},[onScan]);useEffect(()=>{const scanner=new Html5Qrcode('hems-qr-reader');let active=true;scanner.start({facingMode:'environment'},{fps:10,qrbox:{width:230,height:230}},text=>{if(active){active=false;scanner.stop().catch(()=>{});callback.current(text)}},()=>{}).catch(()=>setError('Kamera tidak dapat dibuka. Izinkan akses kamera atau gunakan input token/link di bawah.'));return()=>{active=false;scanner.stop().catch(()=>{})}},[]);return <>{error&&<p className="form-message">{error}</p>}</>}
