@@ -120,3 +120,66 @@
 
 /* Match rundown to date/location cards */
 .invite-rundown-card{width:100%;margin:10px 0 22px;padding:14px;border:0;border-radius:9px;background:#f7f8fa;color:#243248;box-shadow:none;text-align:left;cursor:pointer}.invite-rundown-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;gap:8px}.invite-rundown-top b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-top small{font:400 12px 'DM Sans',sans-serif;color:#8490a0}.invite-rundown-current{display:flex;flex-direction:column;gap:5px;padding:0;background:transparent;border-radius:0}.invite-rundown-current>b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-current small{font:400 12px 'DM Sans',sans-serif;color:#8490a0;line-height:1.5}.invite-rundown-open{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:10px;color:#9b8150;font:700 12px 'DM Sans',sans-serif}
+
+/* Compact invitation rundown: same card height as the location panel */
+.invite-rundown-card{
+  box-sizing:border-box;
+  height:106px;
+  min-height:106px;
+  max-height:106px;
+  overflow:hidden;
+  margin:14px 0 22px;
+  padding:12px 16px;
+  border:0;
+  border-radius:12px;
+  background:#f5f6f8;
+  box-shadow:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+}
+.invite-rundown-top{flex:0 0 auto;margin:0;line-height:18px}
+.invite-rundown-top b{font-size:13px;line-height:18px}
+.invite-rundown-top small{font-size:11px;line-height:18px}
+.invite-rundown-current{
+  min-width:0;
+  display:grid;
+  grid-template-columns:9px minmax(0,1fr);
+  grid-template-rows:auto auto;
+  align-items:center;
+  column-gap:7px;
+  row-gap:1px;
+  padding:0;
+  margin:0;
+  background:transparent;
+  border-radius:0;
+}
+.invite-rundown-current i{grid-column:1;grid-row:1 / span 2}
+.invite-rundown-current>b{
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:12px;
+  line-height:16px;
+}
+.invite-rundown-current small{
+  grid-column:2;
+  grid-row:2;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:10px;
+  line-height:14px;
+}
+.invite-rundown-open{display:none}
+@media(max-width:480px){
+ .invite-rundown-card{height:106px;min-height:106px;max-height:106px;padding:11px 14px;gap:4px}
+ .invite-rundown-top b{font-size:13px}
+ .invite-rundown-current>b{font-size:12px}
+ .invite-rundown-current small{font-size:10px}
+}
