@@ -558,3 +558,26 @@
   transform:translateY(-50%)!important;color:#a68a58!important;
   width:19px!important;height:19px!important;pointer-events:none!important;
 }
+
+
+/* Unified chevron geometry for Date, Location and Rundown cards */
+.invite-content .invite-details>button.invite-date-trigger{
+  position:relative!important;padding-right:48px!important;
+}
+.invite-content .invite-details>button.invite-date-trigger>.invite-date-chevron,
+.invite-content .invite-details>.invite-location-card>.invite-card-chevron,
+.invite-content>.invite-rundown-card>.invite-rundown-chevron{
+  position:absolute!important;right:22px!important;left:auto!important;
+  top:50%!important;bottom:auto!important;
+  width:19px!important;height:19px!important;
+  min-width:19px!important;min-height:19px!important;
+  margin:0!important;padding:0!important;
+  transform:translateY(-50%)!important;
+  color:#a68a58!important;opacity:1!important;
+  stroke-width:2.2px!important;pointer-events:none!important;
+  flex:0 0 19px!important;
+}
+.invite-content .invite-details>button.invite-date-trigger>.invite-date-chevron{
+  display:block!important;
+}
+.invite-content .invite-rundown-card{padding-right:48px!important}
