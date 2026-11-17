@@ -517,3 +517,19 @@
 .invite-content .invite-details>button.invite-date-trigger small{font-size:10px!important;color:#8490a0!important;line-height:1.5!important}
 .invite-content .invite-details>button.invite-date-trigger .invite-date-chevron{width:16px!important;height:16px!important;color:#a68a58!important;opacity:.8!important}
 .invite-content .invite-details>button.invite-date-trigger:focus-visible{outline:2px solid #c5a66a!important;outline-offset:3px!important}
+
+
+/* Venue link: remove underline and show the same navigation cue as the date card */
+.invite-content .invite-venue-link{
+  display:inline-flex!important;align-items:center!important;gap:5px!important;
+  width:fit-content!important;max-width:100%!important;
+  color:#8490a0!important;text-decoration:none!important;
+  border:0!important;box-shadow:none!important;
+}
+.invite-content .invite-venue-link span{text-decoration:none!important}
+.invite-content .invite-venue-link:hover,
+.invite-content .invite-venue-link:focus{text-decoration:none!important;color:#a68a58!important}
+.invite-content .invite-venue-chevron{
+  flex:0 0 auto!important;color:#a68a58!important;
+  width:16px!important;height:16px!important;
+}
