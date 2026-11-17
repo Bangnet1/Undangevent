@@ -70,3 +70,10 @@
 .ihc-gallery-thumbs button{scroll-snap-align:center;flex-shrink:0}
 .ihc-gallery-3d{user-select:none;-webkit-user-select:none}
 .ihc-gallery-card{-webkit-tap-highlight-color:transparent}
+
+/* Event management row actions */
+.event-row-actions{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.event-row-actions .secondary-btn,.event-row-actions .danger-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 11px;font-size:12px}
+.danger-btn{border:1px solid #f0c9c9;background:#fff7f7;color:#b42318;border-radius:8px;font:600 12px Manrope,sans-serif;cursor:pointer}
+.danger-btn:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:600px){.event-row-actions{gap:5px}.event-row-actions .secondary-btn,.event-row-actions .danger-btn{padding:8px;font-size:11px}}
