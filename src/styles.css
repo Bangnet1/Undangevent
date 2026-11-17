@@ -26,3 +26,29 @@
 @keyframes ekg-dot-pulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(2.5);opacity:1}}
 @keyframes heart-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.035)}}
 @media(prefers-reduced-motion:reduce){.invite-heart-wrap,.heart-water-wave,.heart-water-wave-back,.ekg-pulse,.ekg-endpoint{animation:none}}
+
+/* IHC public invitation facility gallery */
+.ihc-gallery{margin:34px 0 8px;padding:28px 18px 20px;border-top:1px solid #e9e2d3;background:linear-gradient(180deg,#fff 0%,#faf9f6 100%);border-radius:18px}
+.ihc-gallery-heading{text-align:center;margin-bottom:18px}
+.ihc-gallery-heading>span{font-size:9px;letter-spacing:2px;font-weight:800;color:#b18e50}
+.ihc-gallery-heading h2{font:700 23px Manrope,sans-serif;color:#14243d;margin:7px 0}
+.ihc-gallery-heading p{font-size:12px;color:#7d8795;margin:0}
+.ihc-gallery-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:210px}
+.ihc-gallery-main{position:relative;width:min(100%,590px);height:clamp(210px,48vw,340px);padding:0;border:4px solid #fff;border-radius:15px;overflow:hidden;background:#e9edf2;box-shadow:0 14px 38px #14243d24}
+.ihc-gallery-main img{width:100%;height:100%;object-fit:cover;display:block}
+.ihc-gallery-main span{position:absolute;inset:auto 0 0;padding:28px 16px 13px;text-align:left;color:white;font-weight:700;font-size:14px;background:linear-gradient(transparent,#101d35d9)}
+.ihc-gallery-arrow{position:absolute;z-index:2;width:38px;height:38px;border:1px solid #d9c69f;border-radius:50%;background:#fff;color:#182944;font-size:27px;line-height:1;box-shadow:0 5px 15px #14243d20}
+.ihc-gallery-arrow.left{left:0}.ihc-gallery-arrow.right{right:0}
+.ihc-gallery-count{text-align:center;color:#9a7c49;font:700 11px Manrope,sans-serif;letter-spacing:2px;margin:14px 0}
+.ihc-gallery-count i{font-style:normal;color:#c8cdd4;margin:0 6px}
+.ihc-gallery-thumbs{display:flex;gap:8px;overflow-x:auto;padding:3px 2px 8px;scrollbar-width:thin}
+.ihc-gallery-thumbs button{flex:0 0 66px;width:66px;height:48px;padding:2px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;opacity:.62;overflow:hidden}
+.ihc-gallery-thumbs button.active{opacity:1;border:2px solid #c5a46b}
+.ihc-gallery-thumbs img{width:100%;height:100%;object-fit:cover;border-radius:5px}
+.ihc-lightbox{position:fixed;inset:0;z-index:1000;background:#071326f2;display:flex;align-items:center;justify-content:center;padding:55px 22px 70px}
+.ihc-lightbox>img{max-width:min(100%,1100px);max-height:80vh;object-fit:contain;border-radius:8px}
+.ihc-lightbox>p{position:absolute;bottom:18px;color:white;font-size:13px}
+.ihc-lightbox-close{position:absolute;top:18px;right:20px;border:0;background:none;color:white;font-size:36px}
+.ihc-lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #ffffff55;background:#ffffff18;color:white;border-radius:50%;width:42px;height:42px;font-size:30px}
+.ihc-lightbox-arrow.left{left:14px}.ihc-lightbox-arrow.right{right:14px}
+@media(max-width:480px){.ihc-gallery{padding:24px 10px 16px}.ihc-gallery-stage{min-height:190px}.ihc-gallery-main{height:220px}.ihc-gallery-arrow{width:32px;height:32px;font-size:23px}.ihc-gallery-thumbs button{flex-basis:58px;width:58px;height:43px}}
