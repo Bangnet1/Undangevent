@@ -378,3 +378,52 @@
   margin-left:0!important;
   margin-right:0!important;
 }
+
+
+/* Rundown preview: align text consistently and animate the live indicator */
+.invite-content button.invite-rundown-card .invite-rundown-top{
+  text-align:left!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current{
+  position:relative!important;
+  display:block!important;
+  box-sizing:border-box!important;
+  padding-left:15px!important;
+  margin:0!important;
+  text-align:left!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-live-dot,
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-next-dot{
+  position:absolute!important;
+  left:0!important;
+  top:5px!important;
+  display:block!important;
+  width:8px!important;
+  height:8px!important;
+  border-radius:50%!important;
+  margin:0!important;
+  transform:none!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current>b,
+.invite-content button.invite-rundown-card .invite-rundown-current small{
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-live-dot{
+  background:#c5a66a!important;
+  box-shadow:0 0 0 0 rgba(197,166,106,.55);
+  animation:rundownDotPulse 1.6s ease-out infinite!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-next-dot{
+  background:#c5a66a!important;
+}
+@keyframes rundownDotPulse{
+  0%{box-shadow:0 0 0 0 rgba(197,166,106,.55);opacity:1}
+  70%{box-shadow:0 0 0 7px rgba(197,166,106,0);opacity:1}
+  100%{box-shadow:0 0 0 0 rgba(197,166,106,0);opacity:.95}
+}
+@media(prefers-reduced-motion:reduce){
+  .invite-content button.invite-rundown-card .rundown-live-dot{animation:none!important}
+}
