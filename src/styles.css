@@ -496,3 +496,24 @@
 .date-calendar-month{border:1px solid #edf0f3;border-radius:16px;padding:17px;margin-bottom:20px}.date-calendar-month h3,.date-calendar-list h3{font-size:15px;color:#344154;margin:0 0 14px}.date-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;text-align:center}.date-calendar-grid>b{font-size:11px;color:#929ba7;padding:6px 0}.date-calendar-grid>span{display:grid;place-items:center;aspect-ratio:1;border-radius:50%;font-size:12px;color:#687384}.date-calendar-grid>span.in-range{background:#c5a66a;color:#fff;font-weight:700}.date-calendar-grid>span.is-today{outline:2px solid #9b804d;outline-offset:2px}.date-calendar-grid>span.is-target{background:#8f7442;color:#fff;box-shadow:0 3px 10px #a88f5d55}
 .date-calendar-list{padding:0 4px 8px}.date-calendar-row{display:flex;align-items:center;gap:12px;padding:10px 8px;border-bottom:1px solid #f0f1f3}.date-calendar-bullet{width:9px;height:9px;border-radius:50%;background:#c5a66a;box-shadow:0 0 0 4px #c5a66a20;flex:0 0 auto}.date-calendar-row>span:last-child{display:flex;flex-direction:column;gap:2px}.date-calendar-row b{font-size:13px;color:#465365}.date-calendar-row small{font-size:11px;color:#929ba7}.date-calendar-row.today b,.date-calendar-row.event-day b{color:#a88f5d}.date-calendar-row.event-day .date-calendar-bullet{background:#8f7442;box-shadow:0 0 0 5px #c5a66a35}
 @media(max-width:600px){.date-calendar-modal{padding:22px 17px;border-radius:22px}.date-calendar-grid{gap:4px}}
+
+
+/* Ensure the date card button receives the same card layout and hit area as the location card */
+.invite-content .invite-details>button.invite-date-trigger{
+  display:flex!important;align-items:center!important;gap:10px!important;
+  width:100%!important;height:86px!important;min-height:86px!important;max-height:86px!important;
+  box-sizing:border-box!important;margin:0!important;padding:14px!important;
+  border:0!important;border-radius:9px!important;background:#f7f8fa!important;
+  color:#a68a58!important;text-align:left!important;cursor:pointer!important;
+  -webkit-appearance:none!important;appearance:none!important;
+}
+.invite-content .invite-details>button.invite-date-trigger>svg:first-child{
+  width:27px!important;height:27px!important;flex:0 0 27px!important;color:#a68a58!important;
+}
+.invite-content .invite-details>button.invite-date-trigger>span{
+  display:flex!important;flex:1!important;min-width:0!important;flex-direction:column!important;gap:6px!important;
+}
+.invite-content .invite-details>button.invite-date-trigger b{font-size:10px!important;color:#47566d!important}
+.invite-content .invite-details>button.invite-date-trigger small{font-size:10px!important;color:#8490a0!important;line-height:1.5!important}
+.invite-content .invite-details>button.invite-date-trigger .invite-date-chevron{width:16px!important;height:16px!important;color:#a68a58!important;opacity:.8!important}
+.invite-content .invite-details>button.invite-date-trigger:focus-visible{outline:2px solid #c5a66a!important;outline-offset:3px!important}
