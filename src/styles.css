@@ -581,3 +581,34 @@
   display:block!important;
 }
 .invite-content .invite-rundown-card{padding-right:48px!important}
+
+
+/* WhatsApp message template settings: clean, full-width and mobile-friendly */
+.settings-template-panel{padding:22px!important}
+.settings-template-panel .panel-heading{display:block!important;margin:0 0 20px!important}
+.settings-template-panel .panel-heading h3{font-size:16px!important;margin:0 0 7px!important;color:#26354a!important}
+.settings-template-panel .panel-heading p{font-size:12px!important;line-height:1.65!important;color:#8994a3!important;max-width:720px!important;margin:0!important}
+.settings-template-form{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;width:100%!important;min-width:0!important}
+.settings-template-form>label{display:block!important;margin:0!important;font-size:12px!important;font-weight:700!important;color:#465469!important}
+.settings-template-textarea{
+  display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+  min-height:280px!important;box-sizing:border-box!important;resize:vertical!important;
+  padding:15px 16px!important;border:1px solid #dfe5ec!important;border-radius:9px!important;
+  background:#fbfcfd!important;color:#344258!important;
+  font:13px/1.7 'DM Sans',sans-serif!important;white-space:pre-wrap!important;
+  overflow-wrap:anywhere!important;outline:none!important;
+}
+.settings-template-textarea:focus{border-color:#b89b68!important;box-shadow:0 0 0 3px #c9a76b20!important;background:#fff!important}
+.settings-template-form>.muted{font-size:11px!important;line-height:1.8!important;margin:0!important;padding:11px 13px!important;background:#f7f8fa!important;border-radius:8px!important;color:#8792a1!important}
+.settings-template-form>.muted b{color:#526078!important}
+.settings-template-form .modal-actions{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:9px!important;margin:8px 0 0!important}
+.settings-template-form .modal-actions button{min-height:40px!important}
+.settings-template-form>p.muted{padding:0!important;background:transparent!important;border-radius:0!important;font-size:11px!important;margin:0!important}
+@media(max-width:760px){
+ .settings-template-panel{padding:17px!important}
+ .settings-template-panel .panel-heading{margin-bottom:17px!important}
+ .settings-template-panel .panel-heading p{font-size:11px!important}
+ .settings-template-textarea{min-height:260px!important;font-size:12px!important;padding:13px!important}
+ .settings-template-form .modal-actions{display:grid!important;grid-template-columns:1fr!important}
+ .settings-template-form .modal-actions button{width:100%!important}
+}
