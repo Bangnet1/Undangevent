@@ -431,3 +431,56 @@
 .invite-venue-link{color:inherit;text-decoration:underline;text-decoration-color:#c5a66a;text-underline-offset:3px}
 .invite-venue-link:active{opacity:.7}
 .field-hint{display:block;color:#8490a0;font-size:11px;margin:-5px 0 12px}
+
+/* Final alignment for rundown preview: consistent text column and centered pulse dot */
+.invite-content button.invite-rundown-card .invite-rundown-current{
+  display:grid!important;
+  grid-template-columns:10px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;
+  align-items:center!important;
+  column-gap:7px!important;
+  row-gap:2px!important;
+  padding:0!important;
+  margin:0!important;
+  text-align:left!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-live-dot,
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-next-dot{
+  position:static!important;
+  grid-column:1!important;
+  grid-row:1!important;
+  justify-self:center!important;
+  align-self:center!important;
+  width:8px!important;
+  height:8px!important;
+  margin:0!important;
+  transform:none!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current>b{
+  grid-column:2!important;
+  grid-row:1!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  line-height:1.35!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current small{
+  grid-column:2!important;
+  grid-row:2!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  line-height:1.35!important;
+}
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-live-dot,
+.invite-content button.invite-rundown-card .invite-rundown-current .rundown-next-dot{
+  background:#c5a66a!important;
+  box-shadow:0 0 0 0 rgba(197,166,106,.5);
+  animation:rundownDotPulse 1.6s ease-out infinite!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .invite-content button.invite-rundown-card .invite-rundown-current .rundown-live-dot,
+  .invite-content button.invite-rundown-card .invite-rundown-current .rundown-next-dot{animation:none!important}
+}
