@@ -117,3 +117,6 @@
 .invite-rundown-current>b{font-size:14px;line-height:1.45;color:#47566d}
 .invite-rundown-current small{font-size:11px;line-height:1.5}
 .invite-rundown-open{margin-top:12px}
+
+/* Match rundown to date/location cards */
+.invite-rundown-card{width:100%;margin:10px 0 22px;padding:14px;border:0;border-radius:9px;background:#f7f8fa;color:#243248;box-shadow:none;text-align:left;cursor:pointer}.invite-rundown-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;gap:8px}.invite-rundown-top b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-top small{font:400 12px 'DM Sans',sans-serif;color:#8490a0}.invite-rundown-current{display:flex;flex-direction:column;gap:5px;padding:0;background:transparent;border-radius:0}.invite-rundown-current>b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-current small{font:400 12px 'DM Sans',sans-serif;color:#8490a0;line-height:1.5}.invite-rundown-open{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:10px;color:#9b8150;font:700 12px 'DM Sans',sans-serif}
