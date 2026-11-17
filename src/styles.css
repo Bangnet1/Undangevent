@@ -120,3 +120,15 @@
 
 /* Match rundown to date/location cards */
 .invite-rundown-card{width:100%;margin:10px 0 22px;padding:14px;border:0;border-radius:9px;background:#f7f8fa;color:#243248;box-shadow:none;text-align:left;cursor:pointer}.invite-rundown-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;gap:8px}.invite-rundown-top b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-top small{font:400 12px 'DM Sans',sans-serif;color:#8490a0}.invite-rundown-current{display:flex;flex-direction:column;gap:5px;padding:0;background:transparent;border-radius:0}.invite-rundown-current>b{font:700 13px 'DM Sans',sans-serif;color:#47566d}.invite-rundown-current small{font:400 12px 'DM Sans',sans-serif;color:#8490a0;line-height:1.5}.invite-rundown-open{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:10px;color:#9b8150;font:700 12px 'DM Sans',sans-serif}
+
+/* Compact invitation rundown card to match the date/location panel height */
+.invite-rundown-card{padding:13px 14px!important;margin:10px 0 22px!important;min-height:0!important}
+.invite-rundown-top{margin:0 0 6px!important;gap:8px}
+.invite-rundown-top b{font-size:13px!important;line-height:1.35}
+.invite-rundown-top small{font-size:11px!important;line-height:1.35}
+.invite-rundown-current{display:grid!important;grid-template-columns:7px minmax(0,1fr);align-items:center;column-gap:7px;row-gap:2px;padding:0!important}
+.invite-rundown-current>b{font-size:13px!important;line-height:1.35}
+.invite-rundown-current small{grid-column:2;font-size:11px!important;line-height:1.35}
+.invite-rundown-current .rundown-live-dot,.invite-rundown-current .rundown-next-dot{grid-column:1;grid-row:1;width:7px;height:7px}
+.invite-rundown-open{margin-top:6px!important;font-size:11px!important;line-height:1.3}
+@media(max-width:600px){.invite-rundown-card{padding:12px 13px!important;margin:10px 0 20px!important}.invite-rundown-top{margin-bottom:5px!important}.invite-rundown-open{margin-top:5px!important}}
