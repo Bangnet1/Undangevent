@@ -30,7 +30,9 @@ jobs:
         run: |
           test -n "$VITE_SUPABASE_URL" || (echo 'Missing VITE_SUPABASE_URL in Actions Variables or Secrets' && exit 1)
           test -n "$VITE_SUPABASE_PUBLISHABLE_KEY" || (echo 'Missing VITE_SUPABASE_PUBLISHABLE_KEY in Actions Variables or Secrets' && exit 1)
-          echo 'Supabase environment variables detected.'
+          case "$VITE_SUPABASE_PUBLISHABLE_KEY" in sb_publishable_*|eyJ*) ;; *) echo 'Invalid key format: use the Supabase Publishable key (sb_publishable_...) or legacy anon key (JWT starting eyJ...)' && exit 1 ;; esac
+          test "$VITE_SUPABASE_URL" = 'https://ijbumnxkcvmstfpbstnm.supabase.co' || (echo 'Supabase URL does not match the configured HEMS project' && exit 1)
+          echo 'Supabase environment variables detected and format validated.'
         env:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY || secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
