@@ -26,11 +26,19 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Validate Supabase configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL" || (echo 'Missing VITE_SUPABASE_URL in Actions Variables or Secrets' && exit 1)
+          test -n "$VITE_SUPABASE_PUBLISHABLE_KEY" || (echo 'Missing VITE_SUPABASE_PUBLISHABLE_KEY in Actions Variables or Secrets' && exit 1)
+          echo 'Supabase environment variables detected.'
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY || secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
       - name: Build application
         run: npm run build
         env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY || secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           VITE_PUBLIC_APP_URL: ${{ vars.VITE_PUBLIC_APP_URL }}
       - name: Configure Pages
         uses: actions/configure-pages@v5
