@@ -630,3 +630,24 @@
   transform:none!important;margin:0!important;padding:0!important;
   width:19px!important;height:19px!important;min-width:19px!important;min-height:19px!important;
 }
+
+
+/* Fullscreen workspace for on-site registration and QR check-in */
+.checkin-heading-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fullscreen-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.checkin-panel:fullscreen{
+  width:100vw!important;height:100vh!important;max-width:none!important;
+  margin:0!important;padding:28px!important;border:0!important;border-radius:0!important;
+  overflow:auto!important;box-sizing:border-box!important;background:#f7f8fb!important;
+}
+.checkin-panel:fullscreen .qr-reader{max-width:min(760px,90vw);margin:18px auto}
+.checkin-panel:fullscreen .scan-entry{max-width:900px;margin:16px auto}
+.checkin-panel:fullscreen .scan-mode{justify-content:center}
+.checkin-panel:fullscreen .panel-heading{max-width:1100px;margin:0 auto 22px}
+.checkin-panel:fullscreen .table-wrap{max-width:1100px;margin:0 auto}
+.checkin-panel:fullscreen .scan-result{max-width:900px;margin:16px auto}
+@media(max-width:600px){
+  .checkin-panel:fullscreen{padding:16px!important}
+  .checkin-heading-actions{gap:6px}
+  .fullscreen-toggle{padding:9px 11px;font-size:12px}
+}
