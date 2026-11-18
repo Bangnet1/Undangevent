@@ -675,3 +675,101 @@
 .checkin-success-modal small{color:#8490a0;font-size:13px}
 .checkin-success-modal .primary-btn{margin-top:10px;min-width:140px}
 .checkin-panel:fullscreen .checkin-success-overlay{position:fixed}
+
+
+/* Tablet-first QR check-in layout and focused fullscreen mode */
+.checkin-panel .checkin-title{
+  font:800 22px/1.25 Manrope,sans-serif!important;
+  letter-spacing:-.35px!important;
+  color:#1b2b42!important;
+}
+.checkin-panel .qr-reader{
+  width:min(100%,720px)!important;
+  max-width:720px!important;
+  margin:18px auto 12px!important;
+}
+.checkin-panel .qr-reader video,
+.checkin-panel .qr-reader canvas{
+  max-width:100%!important;
+}
+.checkin-panel .qr-reader video{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  object-fit:cover!important;
+}
+.checkin-panel:fullscreen{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+}
+.checkin-panel:fullscreen .checkin-title{
+  font-size:clamp(24px,2.4vw,32px)!important;
+}
+.checkin-panel:fullscreen .panel-heading{
+  width:100%!important;
+}
+.checkin-panel:fullscreen .qr-reader{
+  width:min(100%,860px)!important;
+  max-width:860px!important;
+  margin:12px auto 8px!important;
+}
+.checkin-panel:fullscreen .qr-reader video{
+  max-height:58vh!important;
+  object-fit:contain!important;
+}
+.checkin-panel:fullscreen .scan-mode,
+.checkin-panel:fullscreen .scanner-controls{
+  margin:10px auto!important;
+}
+.checkin-panel:fullscreen .scan-entry{
+  width:min(100%,860px)!important;
+}
+@media (min-width:761px) and (max-width:1200px){
+  .checkin-panel{
+    padding:22px!important;
+  }
+  .checkin-panel .panel-heading{
+    align-items:center!important;
+    gap:14px!important;
+  }
+  .checkin-panel .checkin-title{
+    font-size:25px!important;
+  }
+  .checkin-heading-actions{
+    flex-shrink:0!important;
+  }
+  .checkin-panel .scan-mode{
+    justify-content:center!important;
+    margin:18px 0 14px!important;
+  }
+  .checkin-panel .qr-reader{
+    width:min(100%,760px)!important;
+    max-width:760px!important;
+    margin:12px auto!important;
+  }
+  .checkin-panel .qr-reader video{
+    max-height:56vh!important;
+    object-fit:contain!important;
+  }
+  .checkin-panel .scan-entry{
+    width:min(100%,760px)!important;
+  }
+  .checkin-panel:fullscreen{
+    padding:24px!important;
+  }
+  .checkin-panel:fullscreen .qr-reader{
+    width:min(100%,900px)!important;
+    max-width:900px!important;
+  }
+}
+@media (max-width:760px){
+  .checkin-panel .checkin-title{
+    font-size:21px!important;
+  }
+  .checkin-panel:fullscreen .checkin-title{
+    font-size:24px!important;
+  }
+}
