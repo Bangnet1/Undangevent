@@ -622,3 +622,11 @@
  .settings-template-form .modal-actions{display:grid!important;grid-template-columns:1fr!important}
  .settings-template-form .modal-actions button{width:100%!important}
 }
+
+
+/* Keep the location arrow on the same right edge as the date and rundown arrows. */
+.invite-content .invite-details .invite-location-card .invite-location-arrow .invite-card-chevron{
+  position:static!important;right:auto!important;left:auto!important;top:auto!important;bottom:auto!important;
+  transform:none!important;margin:0!important;padding:0!important;
+  width:19px!important;height:19px!important;min-width:19px!important;min-height:19px!important;
+}
