@@ -135,6 +135,16 @@
 
 
 /* Final sizing: invitation rundown panel aligned with date/location panels */
+.invite-content .invite-location-arrow{
+  position:absolute!important;right:22px!important;top:50%!important;
+  transform:translateY(-50%)!important;display:flex!important;align-items:center!important;
+  justify-content:center!important;color:#a68a58!important;text-decoration:none!important;
+  z-index:2!important;min-width:28px!important;min-height:36px!important;
+}
+.invite-content .invite-location-arrow .invite-card-chevron{
+  position:static!important;right:auto!important;top:auto!important;
+  transform:none!important;pointer-events:auto!important;
+}
 .invite-content .invite-rundown-card{
   display:block!important;
   width:100%!important;
@@ -534,17 +544,6 @@
   width:16px!important;height:16px!important;
 }
 
-
-
-/* The complete location card is a link when a venue URL is configured. */
-.invite-content .invite-details>a.invite-location-card{
-  display:flex!important;color:inherit!important;text-decoration:none!important;
-  cursor:pointer!important;
-}
-.invite-content .invite-details>a.invite-location-card:hover,
-.invite-content .invite-details>a.invite-location-card:focus-visible{
-  text-decoration:none!important;outline-offset:3px;
-}
 
 /* Keep navigation chevrons at the same right-center position on all invitation cards */
 .invite-content .invite-details>.invite-location-card{
