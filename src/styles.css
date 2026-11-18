@@ -651,3 +651,27 @@
   .checkin-heading-actions{gap:6px}
   .fullscreen-toggle{padding:9px 11px;font-size:12px}
 }
+
+
+/* Camera selection and successful check-in confirmation */
+.scanner-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin:10px 0 16px}
+.camera-switch{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.checkin-success-overlay{
+  position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(15,25,42,.62);backdrop-filter:blur(4px);
+}
+.checkin-success-modal{
+  width:min(420px,100%);padding:30px 26px;border-radius:22px;background:#fff;
+  box-shadow:0 24px 80px rgba(0,0,0,.22);display:flex;flex-direction:column;
+  align-items:center;text-align:center;gap:12px;
+}
+.checkin-success-icon{
+  width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#168653;background:#e8f7ef;
+}
+.checkin-success-modal h2{margin:4px 0 0;color:#20334e;font-size:24px}
+.checkin-success-modal p{margin:0;color:#7c8796;font-size:14px}
+.checkin-success-modal strong{color:#263750;font-size:18px}
+.checkin-success-modal small{color:#8490a0;font-size:13px}
+.checkin-success-modal .primary-btn{margin-top:10px;min-width:140px}
+.checkin-panel:fullscreen .checkin-success-overlay{position:fixed}
