@@ -535,6 +535,17 @@
 }
 
 
+
+/* The complete location card is a link when a venue URL is configured. */
+.invite-content .invite-details>a.invite-location-card{
+  display:flex!important;color:inherit!important;text-decoration:none!important;
+  cursor:pointer!important;
+}
+.invite-content .invite-details>a.invite-location-card:hover,
+.invite-content .invite-details>a.invite-location-card:focus-visible{
+  text-decoration:none!important;outline-offset:3px;
+}
+
 /* Keep navigation chevrons at the same right-center position on all invitation cards */
 .invite-content .invite-details>.invite-location-card{
   position:relative!important;padding-right:48px!important;box-sizing:border-box!important;
