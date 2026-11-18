@@ -669,10 +669,10 @@
   width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   color:#168653;background:#e8f7ef;
 }
-.checkin-success-modal h2{margin:4px 0 0;color:#20334e;font-size:24px}
-.checkin-success-modal p{margin:0;color:#7c8796;font-size:14px}
-.checkin-success-modal strong{color:#263750;font-size:18px}
-.checkin-success-modal small{color:#8490a0;font-size:13px}
+.checkin-success-modal h2{margin:4px 0 0;color:#20334e;font-size:30px;line-height:1.2}
+.checkin-success-modal p{margin:0;color:#7c8796;font-size:17px;line-height:1.45}
+.checkin-success-modal strong{color:#263750;font-size:25px;line-height:1.3}
+.checkin-success-modal small{color:#8490a0;font-size:16px}
 .checkin-success-modal .primary-btn{margin-top:10px;min-width:140px}
 .checkin-panel:fullscreen .checkin-success-overlay{position:fixed}
 
