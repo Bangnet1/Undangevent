@@ -803,3 +803,27 @@
 .invite-checkin-status>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}
 .invite-checkin-status b{font-size:14px;font-weight:750}
 .invite-checkin-status small{font-size:12px;line-height:1.5;color:inherit;opacity:.85}
+
+
+/* Shared event attendance QR sits beside the live scanner */
+.checkin-workspace-grid{display:grid;grid-template-columns:minmax(220px,290px) minmax(0,1fr);gap:22px;align-items:start;margin-top:18px}
+.checkin-shared-qr-card{position:sticky;top:18px;display:flex;flex-direction:column;align-items:center;gap:13px;padding:20px 16px;border:1px solid #e8ebf0;border-radius:16px;background:#fbfcfe;text-align:center;min-width:0}
+.checkin-shared-qr-heading{display:flex;align-items:center;gap:10px;align-self:stretch;text-align:left;color:#a68a58}
+.checkin-shared-qr-heading>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.checkin-shared-qr-heading b{font-size:14px;color:#263750}
+.checkin-shared-qr-heading small{font-size:11px;line-height:1.4;color:#8490a0}
+.checkin-shared-qr-card>img{display:block;width:min(100%,230px);height:auto;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:10px;padding:7px;box-sizing:border-box}
+.checkin-shared-qr-card>p{margin:0;color:#7e8998;font-size:12px;line-height:1.55}
+.checkin-shared-qr-card>.secondary-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:100%}
+.checkin-shared-qr-placeholder{width:100%;min-height:170px;display:grid;place-items:center;padding:12px;box-sizing:border-box;border-radius:10px;background:#f0f2f5;color:#7e8998;font-size:12px}
+.checkin-scanner-column{min-width:0}
+.checkin-scanner-column .scan-mode{margin-top:0}
+.checkin-scanner-column .qr-reader{width:100%;max-width:none}
+.checkin-panel:fullscreen .checkin-workspace-grid{max-width:1300px;margin:20px auto;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:26px}
+.checkin-panel:fullscreen .checkin-shared-qr-card{position:static}
+@media(max-width:760px){
+ .checkin-workspace-grid{grid-template-columns:1fr;gap:14px}
+ .checkin-shared-qr-card{position:static;max-width:none}
+ .checkin-shared-qr-card>img{width:min(190px,55vw)}
+ .checkin-panel:fullscreen .checkin-workspace-grid{grid-template-columns:1fr}
+}
