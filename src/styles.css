@@ -828,3 +828,16 @@
  .checkin-shared-qr-card>img{width:min(190px,55vw)}
  .checkin-panel:fullscreen .checkin-workspace-grid{grid-template-columns:1fr}
 }
+
+
+/* Public guest identity confirmation */
+.public-directory-guest.selected{border-color:#b69a62;background:#fbf8f1;box-shadow:0 0 0 2px rgba(182,154,98,.12)}
+.public-directory-identity{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding:18px;border:1px solid #e7eaf0;border-radius:14px;background:#fbfcfe}
+.public-directory-identity h3{margin:0;color:#263750;font:700 17px Manrope,sans-serif}
+.public-directory-identity p{margin:5px 0 8px;color:#8490a0;font-size:13px;line-height:1.55}
+.public-directory-identity label{font-size:13px;font-weight:700;color:#536174;margin-top:4px}
+.public-directory-identity input{width:100%;min-height:48px;box-sizing:border-box;border:1px solid #dce1e8;border-radius:10px;padding:12px 14px;background:#fff;color:#263750;font:inherit;outline:none}
+.public-directory-identity input:focus{border-color:#a68a58;box-shadow:0 0 0 3px rgba(166,138,88,.12)}
+.public-directory-identity-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px;flex-wrap:wrap}
+.public-directory-identity-actions button{min-height:44px}
+@media(max-width:600px){.public-directory-identity{padding:15px}.public-directory-identity-actions{flex-direction:column-reverse}.public-directory-identity-actions button{width:100%}}
