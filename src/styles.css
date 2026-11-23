@@ -793,3 +793,13 @@
 .public-directory-guest:disabled{opacity:.6;cursor:wait}
 .public-directory-foot{margin:26px 0 0;text-align:center;color:#98a1ad;font-size:12px}
 @media(max-width:600px){.public-directory-shell{padding:14px}.public-directory-card{padding:26px 19px;border-radius:18px}}
+
+
+/* Personal invitation check-in status */
+.invite-checkin-status{width:min(420px,100%);box-sizing:border-box;margin:16px auto 20px;padding:14px 16px;border-radius:13px;display:flex;align-items:center;gap:12px;text-align:left}
+.invite-checkin-status.is-pending{background:#f5f6f8;border:1px solid #e7e9ed;color:#657184}
+.invite-checkin-status.is-checked-in{background:#eaf6ef;border:1px solid #c8e8d3;color:#187647}
+.invite-checkin-status-icon{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.75)}
+.invite-checkin-status>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}
+.invite-checkin-status b{font-size:14px;font-weight:750}
+.invite-checkin-status small{font-size:12px;line-height:1.5;color:inherit;opacity:.85}
