@@ -854,3 +854,16 @@
 .report-preview-table table{min-width:760px}
 .report-preview-modal .modal-actions{position:sticky;bottom:0;background:#fff;padding-top:14px;margin-top:12px}
 @media(max-width:760px){.report-actions{width:100%}.report-actions button{flex:1}.report-preview-modal{width:calc(100vw - 20px);padding:16px}.report-preview-summary{gap:8px}.report-preview-summary span{flex:1 1 28%}}
+
+
+.public-org-search-wrap{position:relative;width:100%;z-index:5}
+.public-org-search-field{position:relative;display:flex;align-items:center}
+.public-org-search-field>svg{position:absolute;left:15px;color:#8b95a3;pointer-events:none}
+.public-org-search-input{padding-left:44px!important;padding-right:48px!important;outline:none}
+.public-org-search-input:focus{border-color:#a68a58;box-shadow:0 0 0 3px rgba(166,138,88,.12)}
+.public-org-chevron{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#64748b;width:36px;height:36px;display:grid;place-items:center;cursor:pointer}
+.public-org-chevron svg{transform:rotate(90deg)}
+.public-org-options{position:absolute;top:calc(100% + 7px);left:0;right:0;max-height:260px;overflow:auto;background:#fff;border:1px solid #e1e6ed;border-radius:12px;box-shadow:0 12px 30px rgba(25,42,65,.13);padding:6px;z-index:20}
+.public-org-options button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:0;border-radius:8px;background:#fff;text-align:left;color:#263750;font:inherit;cursor:pointer}
+.public-org-options button:hover,.public-org-options button.active{background:#f7f5ef;color:#8d7448}
+.public-org-options p{margin:0;padding:13px;color:#8490a0;font-size:13px}
