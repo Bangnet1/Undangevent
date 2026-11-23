@@ -796,13 +796,14 @@
 
 
 /* Personal invitation check-in status */
-.invite-checkin-status{width:min(420px,100%);box-sizing:border-box;margin:16px auto 20px;padding:14px 16px;border-radius:13px;display:flex;align-items:center;gap:12px;text-align:left}
+.invite-checkin-status{width:min(210px,100%);box-sizing:border-box;margin:8px auto 10px;padding:7px 8px;border-radius:7px;display:flex;align-items:center;gap:6px;text-align:left}
 .invite-checkin-status.is-pending{background:#f5f6f8;border:1px solid #e7e9ed;color:#657184}
 .invite-checkin-status.is-checked-in{background:#eaf6ef;border:1px solid #c8e8d3;color:#187647}
-.invite-checkin-status-icon{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.75)}
-.invite-checkin-status>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}
-.invite-checkin-status b{font-size:14px;font-weight:750}
-.invite-checkin-status small{font-size:12px;line-height:1.5;color:inherit;opacity:.85}
+.invite-checkin-status-icon{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.75)}
+.invite-checkin-status-icon svg{width:10px;height:10px}
+.invite-checkin-status>span:last-child{display:flex;flex-direction:column;gap:2px;min-width:0}
+.invite-checkin-status b{font-size:7px;font-weight:750}
+.invite-checkin-status small{font-size:6px;line-height:1.5;color:inherit;opacity:.85}
 
 
 /* Shared event attendance QR sits beside the live scanner */
