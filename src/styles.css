@@ -908,3 +908,34 @@
  .rundown-preview-timeline .rundown-timeline-item{gap:9px}
  .rundown-preview-timeline .rundown-timeline-content{padding:10px}
 }
+
+
+/* Standalone shareable rundown page: /rundown/:eventSlug */
+.public-rundown-page{min-height:100vh;min-height:100dvh;background:#f5f6f9;color:#1d2c43;padding:clamp(20px,4vw,48px) clamp(16px,5vw,72px);display:flex;flex-direction:column}
+.public-rundown-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;max-width:1120px;width:100%;margin:0 auto 24px}
+.public-rundown-header h1{font:800 clamp(25px,4vw,36px) Manrope,sans-serif;margin:8px 0 5px;color:#1d2c43}
+.public-rundown-header p{margin:0;color:#8792a0;font-size:13px}
+.public-rundown-home{color:#9c8658;text-decoration:none;font-weight:800;font-size:12px;letter-spacing:1px;padding:10px 14px;border:1px solid #e5e8ed;border-radius:9px;background:#fff}
+.public-rundown-clock{max-width:1120px;width:100%;margin:0 auto 24px;background:#fff}
+.public-rundown-timeline{width:100%;max-width:1120px;margin:0 auto;flex:1;padding:8px 8px 28px}
+.public-rundown-timeline:before{left:11px;top:13px;bottom:30px}
+.public-rundown-timeline .rundown-timeline-item{grid-template-columns:24px minmax(0,1fr);gap:16px;padding-bottom:26px}
+.public-rundown-timeline .rundown-timeline-content{padding:12px 16px;border:1px solid transparent;border-radius:12px;transition:background .25s,border-color .25s,box-shadow .25s}
+.public-rundown-timeline .rundown-timeline-item.is-live .rundown-timeline-content{background:#effaf4;border-color:#ccebdc;box-shadow:0 6px 20px #16a36a12}
+.public-rundown-timeline .rundown-timeline-item.is-live .rundown-timeline-marker i{animation:rundown-pulse 1.5s infinite}
+.public-rundown-timeline .rundown-time b{background:#dff4e9;padding:4px 8px;border-radius:20px}
+.public-rundown-timeline .rundown-pic{margin-top:7px;color:#8a7652;font-size:12px}
+.public-rundown-page .rundown-preview-legend{max-width:1120px;width:100%;margin:10px auto 0;padding:16px 4px;border-top:1px solid #e5e9ef;background:transparent}
+.public-rundown-state{max-width:1120px;width:100%;margin:0 auto;padding:28px;background:#fff;border:1px solid #e7eaf0;border-radius:14px;color:#788493}
+@media(max-width:600px){
+ .public-rundown-page{padding:22px 16px 28px}
+ .public-rundown-header{margin-bottom:18px}
+ .public-rundown-header h1{font-size:25px}
+ .public-rundown-header p{font-size:11px;line-height:1.5}
+ .public-rundown-clock{margin-bottom:18px}
+ .public-rundown-date{max-width:118px;font-size:10px}
+ .public-rundown-timeline .rundown-timeline-item{gap:9px;padding-bottom:18px}
+ .public-rundown-timeline .rundown-timeline-content{padding:10px}
+ .public-rundown-timeline .rundown-time{font-size:10px}
+ .public-rundown-timeline .rundown-timeline-content h3{font-size:14px}
+}
